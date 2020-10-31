@@ -1,35 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 4
+#define ROWS 3
+#define COLS 3 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-void square_array(int a[], int size);
-void print_array(int a[], int size); 
-
-void square_array(int a[], int size)
+void addMatrix(int A[][COLS], int B[][COLS], int C[][COLS])
 {
-	int i;
+	int r, c;
 	
-	for(i=0; i<SIZE; i++)
-		a[i] = a[i]*a[i];
+	for (r=0; r<ROWS; r++)
+		for (c=0; c<COLS; c++)
+			C[r][c] = A[r][c]+B[r][c];
+			
 }
 
-void print_array(int a[], int size)
+void printMatrix(int C[][COLS])
 {
-	int i;
+	int r, c;
 	
-	for (i=0; i<SIZE; i++)
-		printf("%3d", a[i]); /*3Àº °ø¹é*/ 
-	printf("\n");
+	for (r=0; r<ROWS; r++)
+		{
+			for (c=0; c<COLS; c++)
+				printf("%3d", C[r][c]);
+			printf("\n");
+		}
 }
 
 int main(int argc, char *argv[]) {
 	
-	int list[SIZE] = {1,2,3,4};
+	int A[ROWS][COLS] = 
+	{
+		{2,3,0},
+		{8,9,1},
+		{7,0,5}
+	};
 	
-	print_array(list, SIZE);
-	square_array(list, SIZE);
-	print_array(list, SIZE);
+	int B[ROWS][COLS] = 
+	{
+		{1,0,0},
+		{0,1,0},
+		{0,0,1}
+	};
 
+	int C[ROWS][COLS];
+	
+	addMatrix(A,B,C);
+	printMatrix(C);
+	
 	return 0;
 }
 
