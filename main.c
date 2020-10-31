@@ -5,18 +5,20 @@
 
 int main(int argc, char *argv[]) {
 	
-	int i, average;
-	int grade[SIZE];
-	int score[SIZE];
+	int i;
+	int a[SIZE] = {1,2,3,4,5};
+	int b[SIZE] = {1,2,3,5,6};
+	int flag_same = 1;
 	
-	for (i=0; i<SIZE; i++)
-		grade[i] = rand() % 100; //grade에 100 보다 작은 랜덤 값 넣기//
-		
-	for (i=0; i<SIZE; i++)
-		score[i] = grade[i];
-		 
-	for (i=0; i<SIZE; i++)
-		printf("score[%d] = %d\n", i, score[i]);
+	for(i=0; i<SIZE; i++)
+	{
+		if (a[i] != b[i])
+		{
+			printf("%d\n", i); //다른값이 여러개면 인덱스 하나 나오고 한칸 내려서 다음 다른 인덱스 
+			flag_same = 0;
+		}
+	}
+	
 
 	return 0;
 }
